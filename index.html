@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Key Detection</title>
+    <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+    const pressed = [];
+    const secretCode = ['wesbos', 'hello', 'cloud', 'rainbow', 'hopes', 'dreams', 'puppies', 'butterflies'];
+
+    function log_stuff(key_event) {
+        pressed.push(key_event.key);
+
+        for (var i = 0; i < secretCode.length; i++) {
+            var max_length = 10;
+            if (pressed.length >= max_length && pressed.join('') != secretCode[i]) {
+                pressed.length = 0;
+            } else if (pressed.join('') === secretCode[i]) {
+                console.log('HELL YEAH!');
+                cornify_add();
+                pressed.length = 0;
+            }
+        }
+        console.log(pressed);
+    }
+
+    window.addEventListener('keyup', log_stuff);
+</script>
+</body>
+</html>
