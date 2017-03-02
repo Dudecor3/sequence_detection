@@ -8,16 +8,18 @@
 <body>
 <script>
     const pressed = [];
+    //type in one of these words to call cornify_add();
     const secretCode = ['wesbos', 'hello', 'cloud', 'rainbow', 'hopes', 'dreams', 'puppies', 'butterflies'];
 
     function log_stuff(key_event) {
         pressed.push(key_event.key);
 
         for (var i = 0; i < secretCode.length; i++) {
-            var max_length = 10;
+            var max_length = 15;
             if (pressed.length >= max_length && pressed.join('') != secretCode[i]) {
                 pressed.length = 0;
-            } else if (pressed.join('') === secretCode[i]) {
+            }
+            if (pressed.join('') === secretCode[i]) {
                 console.log('HELL YEAH!');
                 cornify_add();
                 pressed.length = 0;
